@@ -8,10 +8,7 @@ async function getThumbsJSON(){
     return z
 }
 theJSON = {};
-getThumbsJSON().then((value) => {
-  console.log(value);
-  // Expected output: "Success!"
-})
+
 function setupPages(){
     page_contents = []
     page_array = []
@@ -59,4 +56,12 @@ function renderWithPage(index){
     renderPage(index)
     renderPageButtons();
 }
-renderWithPage(0)
+function getTotalPageCount(pageSize){
+    return Math.ceil(theJSON.level_ids.length/pageSize);
+}
+getThumbsJSON().then((value) => {
+  theJSON = value;
+    pages = getTotalPageCount(25);
+    setupPages();
+    renderWithPage(0);
+})
