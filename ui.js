@@ -62,7 +62,7 @@ function findLevelAndOpenPage(id){
     }
 }
 function onSubmitButton(){
-    input = document.getElementById("submit-button")
+    input = document.getElementById("levelid-input")
     id = input.value
     findLevelAndOpenPage(id);
 }
