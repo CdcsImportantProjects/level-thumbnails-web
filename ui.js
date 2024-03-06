@@ -7,7 +7,11 @@ async function getThumbsJSON(){
     z = JSON.parse(y)
     return z
 }
-theJSON = await getThumbsJSON();
+theJSON = {};
+getThumbsJSON().then((value) => {
+  console.log(value);
+  // Expected output: "Success!"
+})
 function setupPages(){
     page_contents = []
     page_array = []
