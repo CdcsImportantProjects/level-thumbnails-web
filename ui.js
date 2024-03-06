@@ -50,15 +50,45 @@ function renderPageButtons(){
     }
     document.body.appendChild(div)
 }
-
+function findLevelAndOpenPage(id){
+    for (page of page_array){
+        for (level of page){
+            if (level == id){
+                index = page_array.indexOf(page);
+                renderWithPage(index);
+                return index;
+            }
+        }
+    }
+}
+function onSubmitButton(){
+}
+function renderGotoUI(){
+    existingButtonDiv = document.getElementById("goto-view")
+    if (existingButtonDiv != undefined){
+        document.body.removeChild(existingButtonDiv)
+    }
+    div = document.createElement("div")
+    div.id = "goto-view"
+    input = document.createElement("input")
+    input.id = "levelid-input"
+    button = document.createElement("button")
+    button.id = "submit-button"
+    button.setAttribute("onclick","onSubmitButton()")
+    div.appendChild(input)
+    div.appendChild(button)
+    document.body.appendChild(div)
+}
 function renderWithPage(index){
     document.body.innerHTML = ""
     renderPage(index)
     renderPageButtons();
+    renderGotoUI();
 }
 function getTotalPageCount(pageSize){
     return Math.ceil(theJSON.level_ids.length/pageSize);
 }
+
 getThumbsJSON().then((value) => {
   theJSON = value;
     pages = getTotalPageCount(25);
