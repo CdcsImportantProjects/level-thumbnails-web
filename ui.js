@@ -1,6 +1,7 @@
 pages = 0
 page_contents = []
 page_array = []
+currentPage = 0
 async function getThumbsJSON(){
     x = await fetch("https://raw.githubusercontent.com/cdc-sys/level-thumbnails/main/thumbnails.json")
     y = await x.text()
@@ -23,6 +24,7 @@ function setupPages(){
     }
 }
 function renderPage(index){
+    currentPage = index;
     renderingPage = page_array[index]
     div = document.createElement("div")
     div.id = "page-view"
@@ -44,7 +46,12 @@ function renderPageButtons(){
     div.id = "button-view"
     for (page in page_array){
         button = document.createElement("button")
-        button.innerText = parseInt(page) + 1;
+        if (parseInt(page) != currentPage){
+        button.innerHTML = parseInt(page) + 1;
+        }
+        if (parseInt(page) == currentPage){
+        button.innerHTML = "<strong>" + parseInt(page) + 1 + "</strong>";
+        }
         button.setAttribute("onclick",`renderWithPage(${page});`)
         div.appendChild(button)
     }
