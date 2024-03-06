@@ -50,7 +50,7 @@ function renderPageButtons(){
         button.innerHTML = parseInt(page) + 1;
         }
         if (parseInt(page) == currentPage){
-        button.innerHTML = "<strong>" + parseInt(page) + 1 + "</strong>";
+        button.innerHTML = "<strong>" + `${parseInt(page) + 1}` + "</strong>";
         }
         button.setAttribute("onclick",`renderWithPage(${page});`)
         div.appendChild(button)
