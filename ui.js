@@ -46,11 +46,12 @@ function renderPageButtons(){
     div.id = "button-view"
     for (page in page_array){
         button = document.createElement("button")
+        pageNumber = `${parseInt(page) + 1}`
         if (parseInt(page) != currentPage){
-        button.innerHTML = parseInt(page) + 1;
+        button.innerHTML = pageNumber
         }
         if (parseInt(page) == currentPage){
-        button.innerHTML = "<strong>" + `${parseInt(page) + 1}` + "</strong>";
+        button.innerHTML = "<strong>" + pageNumber + "</strong>";
         }
         button.setAttribute("onclick",`renderWithPage(${page});`)
         div.appendChild(button)
