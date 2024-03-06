@@ -62,6 +62,9 @@ function findLevelAndOpenPage(id){
     }
 }
 function onSubmitButton(){
+    input = document.getElementById("submit-button")
+    id = input.value
+    findLevelAndOpenPage(id);
 }
 function renderGotoUI(){
     existingButtonDiv = document.getElementById("goto-view")
@@ -75,6 +78,7 @@ function renderGotoUI(){
     button = document.createElement("button")
     button.id = "submit-button"
     button.setAttribute("onclick","onSubmitButton()")
+    button.innerText = "GOTO";
     div.appendChild(input)
     div.appendChild(button)
     document.body.appendChild(div)
