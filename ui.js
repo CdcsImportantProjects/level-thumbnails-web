@@ -33,6 +33,9 @@ function renderPage(index){
     renderingPage = page_array[index]
     div = document.createElement("div")
     div.id = "page-view"
+    h2 = document.createElement("h2")
+    h2.innerText = "Thumbnails"
+    div.appendChild(h2)
     for (img of renderingPage){
         image = document.createElement("img")
         image.src = `https://raw.githubusercontent.com/cdc-sys/level-thumbnails/main/thumbs/${img}.png`
@@ -49,6 +52,9 @@ function renderPageButtons(){
     }
     div = document.createElement("div")
     div.id = "button-view"
+    h2 = document.createElement("h2")
+    h2.innerText = "Pages"
+    div.appendChild(h2)
     for (page in page_array){
         button = document.createElement("button")
         pageNumber = `${parseInt(page) + 1}`
@@ -86,6 +92,9 @@ function renderGotoUI(){
     }
     div = document.createElement("div")
     div.id = "goto-view"
+    h2 = document.createElement("h2")
+    h2.innerText = "Go To Level"
+    div.appendChild(h2)
     input = document.createElement("input")
     input.id = "levelid-input"
     button = document.createElement("button")
