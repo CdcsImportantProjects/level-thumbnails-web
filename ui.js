@@ -93,6 +93,10 @@ function renderGotoUI(){
 }
 function renderWithPage(index){
     document.body.innerHTML = ""
+    warn = document.createElement("warning")
+    warn.innerHTML = "NOTE: This shows the thumbnails as of " + (new Date(theJSON.lastUpdated*1000)).toLocaleString() + "and will <strong>NOT</strong> be updated due to technical
+  limitations, thanks for understanding.";
+    document.body.appendChild(warn);
     renderPage(index)
     renderPageButtons();
     renderGotoUI();
