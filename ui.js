@@ -4,7 +4,7 @@ page_array = []
 GLOBAL_center = null
 currentPage = 0
 async function getThumbsJSON(){
-    x = await fetch("https://raw.githubusercontent.com/cdc-sys/level-thumbnails/main/thumbnails.json")
+    x = await fetch("https://raw.githubusercontent.com/cdc-sys/level-thumbnails/web/thumbnails.json")
     y = await x.text()
     z = JSON.parse(y)
     return z
