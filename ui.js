@@ -30,7 +30,7 @@ function renderPage(index){
     div.id = "page-view"
     for (img of renderingPage){
         image = document.createElement("img")
-        image.src = `https://cdc-sys.github.io/level-thumbnails/thumbs/${img}.png`
+        image.src = `https://raw.githubusercontent.com/cdc-sys/level-thumbnails/main/thumbs/${img}.png`
         image.width = 256
         image.height = 144
         div.appendChild(image)
