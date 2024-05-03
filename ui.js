@@ -121,6 +121,10 @@ function getTotalPageCount(pageSize){
 
 getThumbsJSON().then((value) => {
   theJSON = value;
+    if (theJSON.deprecated == true){
+        window.location.href = "https://cdc-sys.github.io/level-thumbnails/web-deprecated";
+        return;
+    }
     pages = getTotalPageCount(25);
     setupPages();
     renderWithPage(0);
