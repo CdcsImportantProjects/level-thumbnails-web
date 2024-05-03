@@ -1,6 +1,7 @@
 pages = 0
 page_contents = []
 page_array = []
+GLOBAL_center = null
 currentPage = 0
 async function getThumbsJSON(){
     x = await fetch("https://raw.githubusercontent.com/cdc-sys/level-thumbnails/main/thumbnails.json")
@@ -9,7 +10,11 @@ async function getThumbsJSON(){
     return z
 }
 theJSON = {};
-
+function init(){
+    center = document.createElement("center")
+    document.body.appendChild(center)
+    GLOBAL_center = center;
+}
 function setupPages(){
     page_contents = []
     page_array = []
@@ -35,7 +40,7 @@ function renderPage(index){
         image.height = 144
         div.appendChild(image)
     }
-    document.body.appendChild(div)
+    GLOBAL_center.appendChild(div)
 }
 function renderPageButtons(){
     existingButtonDiv = document.getElementById("button-view")
@@ -56,7 +61,7 @@ function renderPageButtons(){
         button.setAttribute("onclick",`renderWithPage(${page});`)
         div.appendChild(button)
     }
-    document.body.appendChild(div)
+    GLOBAL_center.appendChild(div)
 }
 function findLevelAndOpenPage(id){
     for (page of page_array){
@@ -89,13 +94,14 @@ function renderGotoUI(){
     button.innerText = "GOTO";
     div.appendChild(input)
     div.appendChild(button)
-    document.body.appendChild(div)
+    GLOBAL_center.appendChild(div)
 }
 function renderWithPage(index){
     document.body.innerHTML = ""
     warn = document.createElement("warning")
     warn.innerHTML = "NOTE: This only shows the thumbnails as of " + (new Date(theJSON.lastUpdated*1000)).toLocaleString() + " and will <strong>NOT</strong> be updated due to technical limitations, thanks for understanding.";
     document.body.appendChild(warn);
+    init();
     renderPage(index)
     renderPageButtons();
     renderGotoUI();
